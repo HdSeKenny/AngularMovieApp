@@ -1,0 +1,41 @@
+
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+
+    <div class="container">
+        <div class="row profile" id="blog-main"> 
+          <div class="col-md-2">                 
+              <div class="blog-profile-sidebar">
+                  <div class="blog-profile-usermenu">
+                      <div class="inner-addon right-addon" id="sider-bar-search">
+                          <i class="glyphicon glyphicon-search"></i>
+                          <input type="text" class="form-control" placeholder="Search" name="srch-term" ng-model="query">
+                      </div>
+                      <ul class="nav">
+                        <li><a href="/blogs">
+                          <i class="glyphicon glyphicon-book"></i> All Blogs</a></li>
+                        <li class="active"><a href="/newBlog">
+                          <i class="glyphicon glyphicon-pencil"></i> New Blog </a></li>
+                        <li><a href="/{{current_user._id}}/myBlogs">
+                          <i class="glyphicon glyphicon-star"></i> My Blogs </a></li>
+                      </ul>
+                  </div>    
+              </div>
+            </div>
+            <div class="col-md-9" >          
+                <h1 style="text-align: center; margin-bottom: 30px;margin-right: 150px;">Write New Blog</h1>                      
+                <form ng-submit="addBlog()" style="margin-left:50px;">     
+                    <div class="form-group" id="blog-textarea">
+                         <textarea type="text" class="form-control" rows="2" placeholder="Title.." ng-model="blog.title"></textarea><br>
+                        <textarea type="text" class="form-control" rows="9" placeholder="Content.." ng-model="blog.body"></textarea>
+                    </div>
+                    <button type="submit" ng-disabled="blog.title == null || blog.body == null" class="btn btn-primary"><i class="fa fa-reply"></i> Submit<tton>
+                </form>                
+       
+            </div>
+        </div>
+    </div>
+
+
+
+
+

@@ -1,0 +1,84 @@
+.message-form {
+	width: 80%;
+	margin-bottom: 20px;
+}
+
+#msgText {
+	margin-top: 8px;
+    color: gray;
+    font-size: 15px;
+    font-weight: 400;
+    word-wrap: break-word;
+   	width: 480px;
+}
+
+#msgText i {
+    float: left;
+    left: 100px;
+}
+
+#msgText:hover {
+    text-decoration: none;
+}
+
+#msg-senderImg {
+	margin-top: -10px;
+	margin-right: -30px;
+}
+
+.msg-senderName {
+	position: absolute;
+	top: -10px;
+	color: #006699;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.sendTime {
+    margin-top: -10px;
+	float: right;
+	font-size: 12px;
+	font-weight: 500;
+	margin-right: -30px;
+}
+
+
+
+#msgDeleteBtn {
+	position: relative;
+	float: right;
+	bottom: -10px;
+	margin-right: -30px;
+}
+
+#message-well {
+	width: 80%;
+}
+
+#message-reply-form {
+	margin-top: -10px;
+	width: 80%;
+}
+
+#message-reply-form .btn {
+	margin-top: -10px;
+}
+
+#currentDeleteBtn {
+	float: right;
+	margin-bottom: -10px;
+	margin-right: -30px;
+	margin-left: 35px;
+}
+
+#replyBtn {
+	position: relative;
+	float: right;
+	margin-bottom: -10px;
+	margin-right: -30px;
+}
+
+
+
+
+

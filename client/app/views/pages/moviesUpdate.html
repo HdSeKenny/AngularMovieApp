@@ -1,0 +1,28 @@
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+ <div class="container" >
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-3" >
+      <h3>Update Film</h3> 
+      <form ng-submit="updateMovie()">
+      <div class="form-group">
+          <label for="Name">Name</label>
+          <input type="text" class="form-control" ng-model="newMovie.name" >
+      </div>
+      <div class="form-group">
+          <label for="Actor">Actor</label>
+          <input type="text" class="form-control" ng-model="newMovie.actor" >
+      </div>
+      <div class="form-group">
+          <label for="Director">Director</label>
+          <input type="text" class="form-control" ng-model="newMovie.director" >
+      </div>
+
+      <div class="form-group">
+          <label for="Drama">Drama</label>
+          <input type="text" class="form-control" ng-model="newMovie.drama" >
+      </div>
+      <input type="submit" class="btn btn-primary"  value="Apply changes">
+</form>
+    </div>
+  </div>
+</div>

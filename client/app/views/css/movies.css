@@ -1,0 +1,130 @@
+#addMovieForm .form-group{
+	margin-left: 40px;
+	width: 80%;
+}
+
+
+#movieDetailsBody {
+	padding-top: 50px;
+	width: 65%;
+	padding-bottom: 50px;
+}
+
+.movieDetailsImg {
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+#like-btn {
+	position:absolute;	
+	margin-top: 105px;
+}
+
+#comment-thumb {
+	margin-top: 0px ; 
+}
+
+.thumbnail {
+	width: 70%;
+}
+.movieCommentBody {
+	margin-top: 5px;
+	margin-left:  15px;
+}
+
+#movieCommentBody {
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+    word-wrap: break-word;
+   	width: 480px;
+}
+
+.movie-comment-date {
+	font-size: 12px;
+	color: gray;
+	margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .comment-list .arrow:after, .comment-list .arrow:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+  }
+  .comment-list .panel.arrow.left:after, .comment-list .panel.arrow.left:before {
+    border-left: 0;
+  }
+
+  /*****Left Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.left:before {
+    left: 0px;
+    top: 20px;
+    /*Use boarder color of panel*/
+    border-right-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.left:after {
+    left: 1px;
+    top: 21px;
+    /*Change for different outline color*/
+    border-right-color: #FFFFFF;
+    border-width: 15px;
+  }
+
+
+  /*****Right Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.right:before {
+    right: -16px;
+    top: 30px;
+    /*Use boarder color of panel*/
+    border-left-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.right:after {
+    right: -14px;
+    top: 31px;
+    /*Change for different outline color*/
+    border-left-color: #FFFFFF;
+    border-width: 15px;
+  }
+}
+
+
+
+
+#movie-h1 {
+	margin-top: 50px;
+	text-align: center;
+}
+
+#movie-panel-img {
+	margin-left: -25px;
+	margin-top: -10px;
+	margin-bottom: -20px;
+	width: 120px;
+	height: 165px;
+}
+
+#movie-list-group {
+	text-align: center;
+	padding-top: 16px;
+	width: 150px;
+	position: fixed;
+}
+
+.movie-like {
+	text-align: right;
+}
+
+#movie-detail-btn {
+	float: left;
+}

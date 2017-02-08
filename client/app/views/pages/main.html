@@ -1,0 +1,266 @@
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <div class="jumbotron-home" id="banner" >
+
+            <form  name="form" ng-submit="login(form)" novalidate>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <div class="slider"> 
+                            <ul class="slider-main"> 
+                                <li class="slider-panel"> 
+                                  <a href="#" target="_blank"><img src="assets/images/book.jpg"></a> 
+                                </li> 
+                                <li class="slider-panel"> 
+                                  <a href="#" target="_blank"><img src="assets/images/music.jpg"></a> 
+                                </li> 
+                                <li class="slider-panel"> 
+                                  <a href="#" target="_blank"><img src="assets/images/movie.jpg"></a> 
+                                </li> 
+                                <li class="slider-panel"> 
+                                  <a href="#" target="_blank"><img src="assets/images/game.png"></a> 
+                                </li>
+                            </ul>
+
+                            <div class="slider-extra"> 
+                                <ul class="slider-nav"> 
+                                  <li class="slider-item">1</li> 
+                                  <li class="slider-item">2</li> 
+                                  <li class="slider-item">3</li> 
+                                  <li class="slider-item">4</li> 
+                                </ul> 
+                                <div class="slider-page"> 
+                                    <a class="slider-pre" href="javascript:;;"><</a> 
+                                    <a class="slider-next" href="javascript:;;">></a> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4" id="login-title">
+                      
+                      <div class="login-form-group">
+                        <div class="form-group">
+                           <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                           <input type="email" name="email" class="form-control" ng-model="user.email" required>
+                        </div>
+
+                        <div class="form-group">
+                           <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                           <input type="password" name="password" class="form-control" ng-model="user.password" required>
+                        </div>
+                        <div class="form-group">
+                          <div class="checkbox">
+                              <label><input type="checkbox" value="" checked>Remember me</label>
+                          </div>
+                        </div>
+                          <div class="form-group has-error">
+                              <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+                                 Please enter your email and password.
+                              </p>
+                              <p class="help-block" ng-show="form.email.$error.email && submitted">
+                                 Please enter a valid email.
+                              </p>
+
+                              <p class="help-block">{{ errors.other }}</p>
+                          </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <button type="submit" class="btn btn-success btn-block" role="button" ><span class="glyphicon glyphicon-off"></span> Login</button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="/signup"><button type="submit" class="btn btn-primary btn-block" role="button"> Register</button></a>
+                                </div>
+                            </div>
+                       </div>
+                     </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+
+      <img class="mids" src="assets/images/book-mid.png" alt="...">
+      <div class="caption" id="mainh3">
+        <h3 >BOOK</h3>
+        <p >My name is Kuan Lu. I'm a student of The University of Sheffield. I love Yao Ji.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+ 
+      <img  class="mids" src="assets/images/music-mid.png" alt="...">
+      <div class="caption" id="mainh3">
+        <h3 >MUSIC</h3>
+        <p >This website is created by Kuan Lu and Yao Ji.</p>
+        <p ><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+
+      <img class="mids" src="assets/images/movie-mid.png" alt="...">
+      <div class="caption" id="mainh3">
+        <h3 >MOVIE</h3>
+        <p >Do you like movies? There are many new movies here for you. Join us and enjoy. </p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+  
+      <img  class="mids" src="assets/images/game-mid.png" alt="...">
+      <div class="caption" id="mainh3">
+        <h3 >GAME</h3>
+        <p >My favorite game is the League of Legends, what about yours?</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+ 
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>Angular Fullstack v2.0.13 
+        <a href="https://twitter.com/tyhenkel">@sheffield Kuan Lu & Yao Ji</a></p>
+  </div>
+</footer>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#myBtn-login").click(function(){
+    $("#myModal").modal();
+  });
+});
+
+    $(document).ready(function() { 
+    var length, 
+    currentIndex = 0, 
+    interval, 
+    hasStarted = false, //是否已经开始轮播 
+
+    length = $('.slider-panel').length; 
+
+    $('.slider-panel:not(:first)').hide(); 
+
+    $('.slider-item:first').addClass('slider-item-selected'); 
+
+    $('.slider-page').hide(); 
+
+    $('.slider-panel, .slider-pre, .slider-next').hover(function() { 
+        stop(); 
+        $('.slider-page').show(); 
+    }, function() { 
+        $('.slider-page').hide(); 
+        start(); 
+    }); 
+
+    $('.slider-item').hover(function(e) { 
+        stop(); 
+        var preIndex = $(".slider-item").filter(".slider-item-selected").index(); 
+        currentIndex = $(this).index(); 
+        play(preIndex, currentIndex); 
+    }, function() { 
+        start(); 
+    }); 
+
+    $('.slider-pre').unbind('click'); 
+
+    $('.slider-pre').bind('click', function() { 
+        pre(); 
+    }); 
+    $('.slider-next').unbind('click'); 
+
+    $('.slider-next').bind('click', function() { 
+        next(); 
+    }); 
+
+    $("#swap").hide();
+
+    $("#start-stop").click(function(){
+      
+    if ($(this).text() == "stop") {
+      stop();
+      $(this).text("start");
+      $("#swap").show();
+      $("#swap").click(function(){
+        next(); 
+      });
+    }
+    else {  
+      start();
+      $(this).text("stop");
+      $("#swap").hide();
+    }
+  });
+   
+    function pre() { 
+        var preIndex = currentIndex; 
+        currentIndex = (--currentIndex + length) % length; 
+        play(preIndex, currentIndex); 
+    } 
+ 
+    function next() { 
+        var preIndex = currentIndex; 
+        currentIndex = ++currentIndex % length; 
+        play(preIndex, currentIndex); 
+    } 
+  
+    function play(preIndex, currentIndex) { 
+        $('.slider-panel').eq(preIndex).fadeOut(500) 
+        .parent().children().eq(currentIndex).fadeIn(1000); 
+
+        $('.slider-item').removeClass('slider-item-selected'); 
+
+        $('.slider-item').eq(currentIndex).addClass('slider-item-selected'); 
+    } 
+
+    function start() { 
+        if(!hasStarted) { 
+        hasStarted = true; 
+        interval = setInterval(next, 3000); 
+        } 
+    } 
+
+    function stop() { 
+        clearInterval(interval); 
+        hasStarted = false; 
+        } 
+        //开始轮播 
+        start();
+    }); 
+
+
+
+
+
+</script>
+
+
+<!-- <div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->

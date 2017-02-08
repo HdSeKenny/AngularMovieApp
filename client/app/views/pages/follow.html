@@ -1,0 +1,98 @@
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+
+<div class="jumbotron" id="user-jumbotron">
+	<div class="container">
+    	<div class="row profile">
+			<div class="col-md-3" id="user-side-bar">
+				<div class="profile-sidebar">
+					<div class="profile-userpic"> <img id="" src="{{user.imageUrl}}"> </div>	
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name"> {{user.name}} </div>
+						<div class="profile-usertitle-job"> Developer </div>
+					</div>
+					
+					<div class="profile-userbuttons" ng-show="user._id != currentUser._id">
+						
+						<button 
+							ng-hide="isFollowed(user, currentUser)"  
+							ng-click="followTheUser(user, currentUser)" type="button"
+							 class="btn btn-primary btn-sm" id="follow-btn">Follow</button>					
+						<button  
+							ng-show="isFollowed(user, currentUser)"
+							ng-click="cancelFollowUser(user, currentUser)" type="button"
+							class="btn btn-success btn-sm" id="follow-btn">Followed</button>
+						<a href="/users/{{user._id}}/messages">
+							<button type="button" 							
+								ng-click="" class="btn btn-info btn-sm">Message</button></a>
+					</div>
+
+
+					<div class="profile-userbuttons" ng-show="user._id == currentUser._id">
+
+						<a href="/users/{{currentUser._id}}/lover">
+							<button type="button" class="btn btn-default btn-sm">
+							 Focus </button></a>
+
+						<a href="/users/{{currentUser._id}}/follow">
+							<button type="button" class="btn btn-warning btn-sm">
+							<i class="glyphicon glyphicon-heart"></i> Fans </button></a>
+					</div>
+			
+					<div class="profile-usermenu" >
+						<ul class="nav" ng-show="user._id == currentUser._id">
+							<li><a href="/users/{{currentUser._id}}">
+								<i class="glyphicon glyphicon-home"></i> PERSONAL</a></li>					
+							<li><a href="/users/{{currentUser._id}}/messages" ><i class="glyphicon glyphicon-comment"></i> MESSAGE</a></li>
+							
+							<li><a href="/settings"><i class="glyphicon glyphicon-cog"></i> SETTINGS </a></li>
+						</ul>
+
+						<ul class="nav" ng-show="user._id != currentUser._id">
+							<li class="active"><a href="/users/{{user._id}}/follow">
+								<i class="glyphicon glyphicon-heart"></i> HIS FANS</a></li>					
+							<li><a href="/users/{{user._id}}/lover"><i class="glyphicon glyphicon-heart-empty"></i> HIS FOCUS</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-9">
+				<div class="" id="username-title" ng-show="user._id == currentUser._id">
+                    The persons followed me..
+                </div>
+                <div class="" id="username-title"  ng-show="user._id != currentUser._id">
+                    His Fans...
+                </div>
+                <div class="list-group" ng-repeat="likeUser in user.followed">
+                    <div ng-hide="likeUser.follower == null" class="well" id="likeUserWell">
+                        
+                        <img id="likeUserImg" src="{{likeUser.follower.imageUrl}}">                    
+                        <a id="likeUserText"  href="/users/{{likeUser.follower._id}}" >{{likeUser.follower.name}}</a>
+                        
+                        <button ng-show="user._id == currentUser._id" ng-click="textareashow = !textareashow" id="sendMessageBtn" class="btn btn-primary">Message 
+                            <i class="glyphicon glyphicon-share-alt"></i></button>
+                	</div>
+                    
+	                <div class="well" id="likeUserWell" ng-show="textareashow">
+	                    <div class="form-group">
+							<h5><i class="fa fa-paper-plane-o"></i> Send a message:</h5>
+							<textarea rows="4" placeholder="placeholder" class="form-control"></textarea><br>
+							<button type="submit" class="btn btn-primary"> Submit</button>
+							<button ng-click="textareashow = !textareashow" class="btn btn-default"> Close</button>
+	                    </div>
+	                </div>
+           		</div>
+            </div>
+		</div>
+	</div>
+</div>
+
+<footer class="text-center">
+    <div class="footer-below">         
+        <div class="row">
+            <div class="col-lg-12">
+                Copyright &copy; Created by <a href="#">Kuan Lu</a> 2016  
+            </div>
+        </div>        
+    </div>
+</footer>

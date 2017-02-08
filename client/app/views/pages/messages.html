@@ -1,0 +1,112 @@
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+<div class="jumbotron" id="user-jumbotron">
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3" id="user-side-bar">
+                <div class="profile-sidebar">
+                    <div class="profile-userpic">
+                        <img src="{{user.imageUrl}}" alt="user image">
+                    </div>
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            {{user.name}}
+                        </div>
+                        <div class="profile-usertitle-job">
+                            Developer
+                        </div>
+                    </div>
+                    <div class="profile-userbuttons" ng-controller = "UsersCtrl" ng-show= "user._id != current_user._id">
+                        <button ng-hide="isFollowed(user, current_user)" ng-click="followTheUser(user, current_user)" type="button" class="btn btn-primary btn-sm" id="follow-btn">Follow</button>
+                        <button ng-show="isFollowed(user, current_user) " ng-click="cancelFollowUser(user, current_user)" type="button" class="btn btn-success btn-sm" id="follow-btn">Followed</button>                 
+                        <button type="button" ng-show="user._id != current_user._id" class="btn btn-warning btn-sm">Message</button>
+                    </div>
+
+                    <div class="profile-userbuttons" ng-controller = "UsersCtrl" ng-show= "user._id == current_user._id">
+                        <a href="/users/{{currentUser._id}}/lover">
+                            <button type="button" class="btn btn-default btn-sm" ng-click="isFollowed(user,currentUser)">
+                                Focus</button>
+                        </a>
+                        <a href="/users/{{currentUser._id}}/follow">
+                            <button type="button" ng-click="isFollowed(user,currentUser)" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-heart"></i> Fans </button>
+                        </a>
+                    </div>
+                    <div class="profile-usermenu">
+                        <ul class="nav" ng-show="user._id != current_user._id">
+                            <li><a href="/users/{{user._id}}/follow"><i class="glyphicon glyphicon-heart"></i> HIS FANS</a></li>
+                            <li><a href="/users/{{user._id}}/lover"><i class="glyphicon glyphicon-flag"></i> HIS FOCUS</a>
+                            </li>
+                        </ul>
+                        <ul class="nav" ng-show="user._id == current_user._id">
+                            <li><a href="/users/{{current_user._id}}">
+                                <i class="glyphicon glyphicon-home"></i> PERSONAL</a>
+                            </li>
+                            <li class="active"><a href="/users/{{current_user._id}}/messages"><i class="glyphicon glyphicon-comment"></i> MESSAGES </a></li>
+
+                            <li><a href="/settings"><i class="glyphicon glyphicon-cog"></i>
+								SETTINGS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9" >
+                <h3>{{user.name}} - messages center - 5</h3>
+                <div class="message-form" ng-hide="user._id == current_user._id">
+                    <form role="form" ng-submit="leaveMessage(user, current_user)">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5"
+                             ng-model="message.body"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
+                    </form>
+                </div>
+                <div ng-repeat=" message in messages | orderBy:'- created_at' ">
+                    <div class="well" id="message-well" ng-hide="user.messages == null" >
+                        <div class="row" >
+                            <div class="col-xs-2" id="msg-senderImg">
+                                <img id="likeUserImg" src="{{message.sender.imageUrl}}">
+                            </div>
+                            <div class="col-xs-10"  id="msgBody">
+                                <p> 
+                                    <span class="msg-senderName">{{message.sender.name}}</span>
+                                    <span class="sendTime">
+                                        {{message.created_at | date:'h:mm a @ MM/dd/yyyy'}}
+                                    </span>
+                                </p>  
+                                
+                                <p id="msgText" >{{message.body}}</p>
+
+                                <button type="button" id="currentDeleteBtn"  
+                                    ng-click="deleteMessage(message)" 
+                                    ng-show="user._id == current_user._id"  class="btn btn-sm btn-danger">
+                                    <i class="glyphicon glyphicon-trash"></i></button>
+
+                                <button ng-hide="message.sender._id == current_user._id" ng-click="textareashow = !textareashow" id="replyBtn" class="btn btn-default btn-sm"> reply 
+                                    <i class="glyphicon glyphicon-share-alt"></i></button>
+
+                                <button type="button" id="msgDeleteBtn"  
+                                    ng-click="deleteMessage(message)" 
+                                    ng-show="message.sender._id == current_user._id"  class="btn btn-sm btn-info">
+                                    <i class="glyphicon glyphicon-remove"></i></button>
+
+                            </div>
+                        </div>        
+                    </div>
+
+                    <form class="form-group" ng-submit="replyMessage(message, current_user)" ng-show="textareashow" id="message-reply-form">
+                        <div class="form-group">
+                            <textarea rows="4" ng-model="message.reply.body" placeholder="reply...." class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm"> Send</button>
+                        <button ng-click="textareashow = !textareashow" class="btn btn-default btn-sm"> Close</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

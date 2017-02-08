@@ -1,0 +1,54 @@
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+<div class="container" id="movieDetailsBody">
+    <div class="panel panel-default">
+        <div class="row">
+            <div class="col-xs-4">
+                <img src="{{movie.imageurl}}" class="movieDetailsImg">
+            </div>
+            <div class="col-xs-8">
+              <h3><strong>Name</strong>: {{movie.name}}</h3>
+              <h5><strong>Actor</strong>: {{movie.actor}}</h5>
+              <h5><strong>Director</strong>: {{movie.director}}</h5>
+              <h5><strong>Drama</strong>: {{movie.drama}}</h5>
+               <button class="btn btn-primary" id="like-btn">like it</button>
+            </div>
+            
+        </div> 
+    </div>
+
+      <section class="comment-list" ng-repeat="comment in comments ">
+          <article class="row">
+              <div class="col-xs-2" >
+                  <figure class="thumbnail" >
+                    <img class="img-responsive" id="comment-thumb" src="{{comment.comment_by.imageUrl}}" />
+                  </figure>
+              </div>
+              <div class="col-xs-10" id="comment-body">
+                  <div class="panel panel-default arrow left">           
+                      <div class="panel-body">
+                          <header class="text-left">
+                              <div class="comment-user">
+                                  <a href="/users/{{comment.comment_by._id}}" ><i class="fa fa-user"></i> {{comment.comment_by.name}}</a>
+                                  <time class="movie-comment-date" > {{comment.created_at | date:'h:mm a @ MM/dd/yyyy'}}</time>
+                              </div>                
+                          </header>
+                          <div class="movieCommentBody">
+                              <p id="movieCommentBody">{{comment.body}}</p>
+                          </div>
+                          <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </section>
+                
+      <form ng-submit="addComment()"  style="margin-top:30px;">
+          <h3>Leave a comment: </h3>
+          <div class="form-group" >
+              <textarea type="text" class="form-control" rows="4"
+              placeholder="Comment" ng-model="comment.body"></textarea>
+          </div>
+              <button type="submit" class="btn btn-primary"> Submit</button>
+      </form>
+</div>
+       

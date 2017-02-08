@@ -1,0 +1,181 @@
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+
+<div class="jumbotron" id="user-jumbotron">
+	<div class="container">
+    	<div class="row profile">
+			<div class="col-md-3" id="user-side-bar">
+				<div class="profile-sidebar">
+					<div class="profile-userpic">
+						<img id="" src="{{imageUrl}}" >
+					</div>
+
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">
+							{{ user.name }}
+						</div>
+						<div class="profile-usertitle-job">
+							Developer
+						</div>
+					</div>
+
+					<div class="profile-userbuttons">
+						<button
+							ng-hide="user._id == currentUser._id"
+							ng-click="myFunction()" type="button"
+							 class="btn btn-primary btn-sm" id="follow-btn">
+							 <span>{{toggleText}}</span>
+						</button>
+
+
+						<!-- <button
+							ng-show="isFollowed(user, currentUser) && user._id != currentUser._id"
+							ng-click="cancelFollowUser(user, currentUser)" type="button"
+							class="btn btn-success btn-sm" id="follow-btn">Followed</button> -->
+
+						<a href="/users/{{currentUser._id}}/lover">
+							<button type="button" class="btn btn-default btn-sm"
+							ng-show="user._id == currentUser._id"
+							ng-click="isFollowed(user,currentUser)">
+							 Focus</button>
+						</a>
+
+						<a href="/users/{{currentUser._id}}/follow">
+							<button type="button"
+							ng-show="user._id == currentUser._id"
+							ng-click="isFollowed(user,currentUser)" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-heart"></i> Fans </button>
+						</a>
+						<a href="/users/{{user._id}}/messages">
+							<button type="button" ng-show="user._id != currentUser._id"
+							 class="btn btn-info btn-sm">Message</button></a>
+
+					</div>
+
+					<div class="profile-usermenu" >
+
+						<ul class="nav" ng-show="user._id != currentUser._id">
+							<li><a href="/users/{{user._id}}/follow" ><i class="glyphicon glyphicon-heart"></i> HIS FANS</a></li>
+							<li><a href="/users/{{user._id}}/lover" ><i class="glyphicon glyphicon-flag"></i> HIS FOCUS</a></li>
+						</ul>
+
+						<ul class="nav" ng-show="user._id == currentUser._id">
+							<li class="active">
+								<a href="/users/{{getCurrentUser()._id}}">
+								<i class="glyphicon glyphicon-home"></i> PERSONAL </a></li>
+							<li><a href="/users/{{currentUser._id}}/messages"><i class="glyphicon glyphicon-comment"></i> MESSAGE </a></li>
+							<li><a href="/settings"><i class="glyphicon glyphicon-cog"></i> SETTINGS </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-9" >
+				<div style="text-align: left; margin-top: 0;">
+					<h2>{{user.name}}</h2> <hr class="user-hr">
+				</div>
+				<div class="row">
+					<div class="col-xs-3" ng-show="user._id == currentUser._id" >
+
+						<img id="blah" src="{{user.imageUrl}}" width="130" height="130" >
+
+						<div class="upload-btns">
+							<span class="btn btn-info btn-sm btn-file" id="btn-file">Browse <input type="file"  name="logo" id="logo" file-model="logoFile"></span>
+
+							<button id="uploads-btn" class="btn btn-primary btn-sm" ng-click="uploadImage(logoFile, currentUser)">
+								Upload</button>
+						</div>
+					</div>
+					<div class="col-xs-9" id="userInfo">
+						<form editable-form name="editableForm" onaftersave="saveUser(currentUser)">
+							<div class="row">
+								<div class="col-xs-5" id="userFirstLabel">
+									<label>Username :</label>
+								</div>
+								<div class="col-xs-5" id="userSecondLabel">
+									<p id="userSecondLabel" editable-text="user.username" e-name="username" onbeforesave="checkName($data)" e-required>{{user.username || 'empty' }}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-5" id="userFirstLabel">
+									<label>Realname :</label>
+								</div>
+								<div class="col-xs-5" id="userSecondLabel">
+									<p id="userSecondLabel" editable-text="user.name" e-name="name" onbeforesave="checkName($data)" e-required>{{user.name || 'empty'}}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-5" id="userFirstLabel">
+									<label>Gender :</label>
+								</div>
+								<div class="col-xs-5" id="userSecondLabel">
+									<p id="userSecondLabel" editable-text="user.gender" e-name="gender" onbeforesave="checkName($data)" e-required>{{user.gender || 'empty'}}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-5" id="userFirstLabel">
+									<label>Email :</label>
+								</div>
+								<div class="col-xs-5" id="userSecondLabel">
+									<p id="userSecondLabel" editable-text="user.email" e-name="email" onbeforesave="checkName($data)" e-required><a href="mailto:info@support.com">{{user.email || 'empty'}}</a></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-5" id="userFirstLabel">
+									<label>Birthday :</label>
+								</div>
+								<div class="col-xs-5" >
+									<p id="userSecondLabel" editable-text="user.birthDay" e-name="birthDay" onbeforesave="checkName($data)" e-required>{{user.birthDay || 'empty'}}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-5" id="userFirstLabel">
+									<label>Phone Number:</label>
+								</div>
+								<div class="col-xs-5" >
+									<p id="userSecondLabel" editable-text="user.phoneNo" e-name="phoneNo" onbeforesave="checkName($data)" e-required>{{user.phoneNo || 'empty'}}</p>
+								</div>
+							</div>
+							<div class="row" ng-show="user._id == currentUser._id">
+								<div class="col-xs-5"></div>
+								<div class="col-xs-5" style="margin-top: 10px;">
+									<a href="#" data-original-title="Edit this user" type="button"
+										class="btn btn-warning"  ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+										<i class="glyphicon glyphicon-edit"></i> Update</a>
+
+									<span ng-show="editableForm.$visible">
+								        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+								          Update
+								        </button>
+								        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+								          Cancel
+								        </button>
+							      	</span>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+            </div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+    function readURL(input) {
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+
+	        reader.onload = function (e) {
+	            $('#blah').attr('src', e.target.result);
+	        }
+
+	        reader.readAsDataURL(input.files[0]);
+	    }
+    }
+
+    $("#logo").change(function(){
+        readURL(this);
+    });
+
+</script>

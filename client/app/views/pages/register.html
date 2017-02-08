@@ -1,0 +1,375 @@
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+
+    <div class="jumbotron" id="reg-jum">  
+        <div id="moodhouse-img">
+            <img   src="assets/images/moodhouse.png" alt="moodhouse">
+            <img  id="plus" src="assets/images/equal.png" alt="moodhouse">
+            <img  id="mhi"src="assets/images/book-white.png" alt="moodhouse">
+            <img  id="plus" src="assets/images/plus.png" alt="moodhouse">
+            <img  id="mhi" src="assets/images/movie-white.png" alt="moodhouse">
+            <img  id="plus" src="assets/images/plus.png" alt="moodhouse">
+            <img  id="mhi" src="assets/images/music-white.png" alt="moodhouse">
+        </div> 
+
+        <h1 class="signup-h1"><strong>THE MOOD HOUSE</strong></h1>
+      
+        <div id="reg-author">
+            <p>Course: Web Technologies</p>
+            <p>Author: Kuan Lu & Yao Ji </p>
+            <p>Department: Information School<p>
+        </div>
+
+        <div class="module form-module">
+            <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                <div class="tooltip">Click Me</div>
+            </div>
+
+            <div class="form">
+                <h2 ><strong>Login here</strong></h2>
+                <form name="form" ng-submit="login(form)" ng-controller="LoginCtrl" novalidate>
+                    <div class="form-group">
+                        <div class="inner-addon left-addon">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            <input type="email" name="email" ng-model="user.email" placeholder="Username" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="inner-addon left-addon">
+                            <i class="glyphicon glyphicon-open"></i>
+                            <input type="password" name="password" ng-model="user.password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group has-error">
+                        <p class="help-block" ng-show="form.email.$error.required && submitted">Please enter your email.</p>
+                        <p class="help-block" ng-show="form.password.$error.required && submitted">Please enter your password.</p>
+                        <p class="help-block" ng-show="form.email.$error.email && submitted">Please enter a valid email.</p>
+                        <p class="help-block">{{ errors.other }}</p>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-login" >Login</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="no-account">Don't have an account? <strong>click </strong><i class="fa fa-times fa-pencil"> ↑ </i></div>
+
+            <div class="form">
+                <h2><strong>Join us now !</strong></h2>
+                <form id="registrationForm" name="form" ng-submit="register(form)" class="form-horizontal" ng-controller="SignupCtrl" novalidate>
+                    <div class="form-group" 
+                        ng-class="{ 'has-success': form.username.$valid && submitted,
+                                'has-error': form.username.$invalid && submitted }"
+                                id="form-group-re">
+                       
+                            <input type="text" name="username" ng-model="user.username"     placeholder="username" required/>
+                     
+                    </div>
+                     
+                    <div class="form-group" 
+                        ng-class="{ 'has-success': form.password.$valid && submitted,
+                                    'has-error': form.password.$invalid && submitted }"
+                                    id="form-group-re">
+                      
+                            <input type="password" name="password" ng-model="user.password" placeholder="password" required/>
+                        
+                    </div>
+             
+                    <div class="form-group" 
+                        ng-class="{ 'has-success': form.name.$valid && submitted,
+                                    'has-error': form.name.$invalid && submitted }"
+                                    id="form-group-re">
+                        
+                            <input type="text" name="name" ng-model="user.name" 
+                                placeholder="real name" required />
+                       
+                    </div>
+                     
+                    <div class="form-group" 
+                        ng-class="{ 'has-success': form.birthDay.$valid && submitted,
+                                    'has-error': form.birthDay.$invalid && submitted }"
+                                    id="form-group-re">
+                                 
+                            <input type="text" name="date" ng-model="user.birthDay"
+                                placeholder="birthday: DD/MM/YY" id="datePicker" />
+                                                 
+                    </div>
+
+                   <!--  <div class="form-group">
+                        <label class="col-xs-3 control-label">Gender</label>
+                        <div class="col-xs-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="male" /> Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="female" /> Female
+                                </label>
+                            </div>
+            
+                        </div>
+                    </div> -->
+                    <div class="form-group" 
+                        ng-class="{ 'has-success': form.email.$valid && submitted,
+                                    'has-error': form.email.$invalid && submitted }"
+                                    id="form-group-re"> 
+                    
+                            <input type="email" name="email" ng-model="user.email" placeholder="email address" required mongoose-error/>
+                            <p class="help-block" ng-show="form.email.$error.mongoose"> {{ errors.email }}</p>  
+                            
+                    </div>
+
+                    <div class="form-group" >                        
+                        <button type="submit"  class="btn btn-lg btn-login" >submit</button>
+                    </div> 
+                    
+                    <div class="have-account">
+                        Have an account?<strong>click </strong>
+                        <a href="#"> x ↑ </i>
+                    </div>     
+                </form>
+            </div>
+            <div class="cta"><a href="#">Forgot your password?</a></div>
+        </div>
+    </div>
+
+    <!-- <div class="content-section-a-reg">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <div class="home-text">
+                      <h2 class="section-heading"> MOST FAMOUS BOOKS</h2>
+                      <p class="lead">A special thanks to for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                      <p class="home-button"><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                  </div>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    
+                </div>
+            </div>
+        </div>
+    </div> --> 
+    <div class='container'>
+        <div class="container marketing">
+
+          <!-- Three columns of text below the carousel -->
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="assets/images/book-mid.png" alt="Generic placeholder image">
+              <h2>BOOKS</h2>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img  src="assets/images/movie-mid.png"alt="Generic placeholder image">
+              <h2>MOVIES</h2>
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img  src="assets/images/music-mid.png" alt="Generic placeholder image">
+              <h2>MUSICS</h2>
+              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+          </div><!-- /.row -->
+
+
+          <!-- START THE FEATURETTES -->
+
+          <hr class="featurette-divider">
+
+          <div class="row featurette">
+            <div class="col-md-6" id="first-text">
+              <h2 class="featurette-heading">FAMOUS BOOKS</h2>
+              <p class="lead" id="text-1">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-4" id="first-img">
+              <img class="img-circle" id="img-circle-1"class="featurette-image img-responsive center-block" src="assets/images/book.jpg" alt="Generic placeholder image" width="400" height="300">
+            </div>
+          </div>
+
+          <hr class="featurette-divider">
+
+          <div class="row featurette">
+            <div class="col-md-6 col-md-push-5" id="second-text">
+              <h2 class="featurette-heading" id="second-heading">YEAH, MOVIES</h2>
+              <p class="lead" id="text-2">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-4 col-md-pull-5" id="second-img">
+              <img class="img-circle" id="img-circle-2" class="featurette-image img-responsive center-block" src="assets/images/movie.jpg" alt="Generic placeholder image" width="400" height="300">
+            </div>
+          </div>
+
+          <hr class="featurette-divider">
+      
+          <div class="row featurette" id="last-part">
+            
+            <div class="col-md-6" id="first-text">
+              <h2 class="featurette-heading">LISTEN TO HEART</h2>
+              <p class="lead" id="text-1">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-4" id="first-img">
+              <img class="img-circle" id="img-circle-1"class="featurette-image img-responsive center-block" src="assets/images/music.jpg" alt="Generic placeholder image" width="400" height="300">
+            </div>
+
+
+          </div>
+        </div>
+<!--   <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">About the web:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
+        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <form class="thing-form">
+    <label>Give me your advice:</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+      </span>
+    </p>
+  </form>
+</div> -->
+
+    </div>
+      
+       
+    
+
+<script >
+    $(document).ready(function(){
+        $('.toggle').click(function(){
+          $(this).children('i').toggleClass('fa-pencil');
+
+          $('.form').animate({
+              height: "toggle",
+              'padding-top': 'toggle',
+              'padding-bottom': 'toggle',
+              opacity: "toggle"
+          }, "slow");
+      });
+    })
+
+    $(document).ready(function() {
+
+    $('#registrationForm').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            // firstName: { 
+            //     validators: {
+            //         notEmpty: {
+            //             message: 'The first name is required'
+            //         },
+            //         regexp: {
+            //             regexp: /^[a-z\s]+$/i,
+            //             message: 'Alphabetical characters and spaces only'
+            //         }
+            //     }
+            // },
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: 'The name is required'
+                    },
+                     regexp: {
+                        regexp: /^[a-z\s]+$/i,
+                        message: 'Alphabetical characters and spaces only'
+                    }
+                }
+            },
+            username: {
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'Between 6 and 30 characters'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'Alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'Email address is required'
+                    },
+                    emailAddress: {
+                        message: 'Not a valid email address'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'It cannot be the same as username'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'Gender is required'
+                    }
+                }
+            },
+            date: {
+                validators: {
+                    notEmpty: {
+                        message: 'Birthday is required'
+                    },
+                    date: {
+                        format: 'DD/MM/YYYY',
+                        message: 'Birthday is not a valid'
+                    }
+                }
+            }
+
+        }
+    }) .on('success.form.fv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+});
+
+$(document).ready(function() {
+    $('#datePicker')
+        .datepicker({
+            format: 'dd/mm/yyyy'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#registrationForm').formValidation('revalidateField', 'date');
+       
+        });
+});
+
+
+</script>
+
+    

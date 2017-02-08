@@ -1,0 +1,51 @@
+
+<div ng-include="'/client/app/views/pages/navbar.html'"></div>
+
+    <div class="container">
+        <div class="row profile" id="blog-main"> 
+          <div class="col-md-2">                 
+              <div class="blog-profile-sidebar">
+                  <div class="blog-profile-usermenu">
+                      <div class="inner-addon right-addon" id="sider-bar-search">
+                          <i class="glyphicon glyphicon-search"></i>
+                          <input type="text" class="form-control" placeholder="Search" name="srch-term" ng-model="query">
+                      </div>
+                      <ul class="nav">
+                        <li class="active"><a href="/blogs">
+                          <i class="glyphicon glyphicon-book"></i> All Blogs</a></li>
+                        <li><a href="/newBlog">
+                          <i class="glyphicon glyphicon-pencil"></i> New Blog </a></li>
+                        <li><a href="/{{current_user._id}}/myBlogs">
+                          <i class="glyphicon glyphicon-star"></i> My Blogs </a></li>
+                      </ul>
+                  </div>    
+              </div>
+            </div>
+            <div class="col-md-8">          
+                <h1 style="text-align: center; margin-bottom: 30px;margin-right: 100px;">All Blogs</h1>
+                <div class="row" id="allBlogsTitle">
+                    <div class="col-xs-2"><h4>Thumbs-up</h4></div>
+                    <div class="col-xs-6"><h4>Title</h4></div>
+                    <div class="col-xs-4"><h4>Author</h4></div>
+                </div>
+          
+                  <div class="row" style="text-align: center;" ng-repeat="blog in blogs | filter:{ title: query } | orderBy:'-upvotes'" > 
+                      <div class="col-xs-2" style="font-size: 18px; margin-top:10px;">    
+                        <span ng-click="incrementUpvotes(blog)" class="glyphicon glyphicon-thumbs-up"> {{blog.upvotes}}</span> 
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="list-group" id="blog-body">
+                          <a href="#" style="color: blue;" class="list-group-item" ng-click="checklogin(blog)">{{blog.title}}</a>
+                        </div>
+                      </div>
+                      <div class="col-xs-4">
+                          <div class="list-group" id="last-list-group">
+                              <a href="/users/{{blog.write_by._id}}" class="list-group-item"><i class="glyphicon glyphicon-user" style="margin-right: 10px;"></i>{{blog.write_by.name}}<!-- - {{blog.created_at | date:'h:mm a @ MM/dd/yyyy'}} --></a> 
+                          </div>                       
+                      </div>
+                 </div>              
+            </div>
+        </div>
+    </div>
+
+

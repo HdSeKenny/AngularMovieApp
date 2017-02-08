@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="no-js"> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>Movie House</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+  
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />      
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />  
+    <link rel="stylesheet" href="bower_components/form-validation/dist/css/formValidation.min.css" />
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/datepicker.min.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/datepicker3.min.css" />
+
+    <link rel="stylesheet" href='bower_components/my-scripts/font-style.css'>
+    <link rel="stylesheet" href="bower_components/my-scripts/angular-main.css" />
+
+    <link rel="stylesheet" href="app/app.css">
+    <link rel="stylesheet" href="app/views/css/main.css">
+    <link rel="stylesheet" href="app/views/css/blogs.css">
+    <link rel="stylesheet" href="app/views/css/comments.css">
+    <link rel="stylesheet" href="app/views/css/navbar.css">
+    <link rel="stylesheet" href="app/views/css/messages.css">
+    <link rel="stylesheet" href="app/views/css/movies.css">
+    <link rel="stylesheet" href="app/views/css/user.css">
+
+      <!--  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> -->
+      <!-- <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'> -->
+      <!-- <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'> -->
+
+      <!-- Data picker -->
+      <!--    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" /> -->
+
+  </head>
+  <body ng-app="movieApp">
+    <div ng-view autoscroll="true"></div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+    </script>
+
+
+    <!--[if lt IE 9]>
+	    <script src="bower_components/es5-shim/es5-shim.js"></script>
+	    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-route/angular-route.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-socket-io/socket.js"></script>
+      <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+     <!--
+      <script src="socket.io-client/socket.io.js"></script>-->
+      <script src="app/app.js"></script>
+       
+      <script src="app/controllers/account/account.js"></script>
+      <script src="app/controllers/account/admin.controller.js"></script>
+      <script src="app/controllers/account/login.controller.js"></script>
+      <script src="app/controllers/account/settings.controller.js"></script>
+      <script src="app/controllers/account/signup.controller.js"></script>
+
+      <script src="app/controllers/blog/blog.js"></script>
+      <script src="app/controllers/blog/blogs.controller.js"></script>
+      <script src="app/controllers/blog/myBlogs.controller.js"></script>
+      <script src="app/controllers/blog/updateBlogs.controller.js"></script>
+
+      <script src="app/controllers/comment/comment.js"></script>
+      <script src="app/controllers/comment/comments.controller.js"></script>
+
+      <script src="app/controllers/main/main.js"></script>
+      <script src="app/controllers/main/main.controller.js"></script>
+
+      <script src="app/controllers/movie/movie.js"></script>
+      <script src="app/controllers/movie/movies.controller.js"></script>
+      <script src="app/controllers/movie/movieDetails.controller.js"></script>
+      <script src="app/controllers/movie/movieEdits.controller.js"></script>
+      <script src="app/controllers/movie/moviesUpdate.controller.js"></script>
+
+      <script src="app/controllers/user/user.js"></script>
+      <script src="app/controllers/user/users.controller.js"></script>
+      <script src="app/controllers/user/follow.controller.js"></script>
+      <script src="app/controllers/user/messages.controller.js"></script>
+
+      <script src="app/controllers/navbar/navbar.controller.js"></script>
+
+      <script src="app/directives/mongoose-error.directive.js"></script>
+      <script src="app/directives/myDirective.directive.js"></script>
+      
+      <script src="app/services/auth.service.js"></script>
+      <script src="app/services/blog.service.js"></script>
+      <script src="app/services/comment.service.js"></script>
+      <script src="app/services/movie.service.js"></script>
+      <script src="app/services/user.service.js"></script>
+      <!--
+      <script src="socket/socket.service.js"></script> -->
+
+      <script src="bower_components/bootstrap/dist/js/datepicker.min.js"></script>
+
+      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+      <script src="bower_components/jquery/dist/shorten.js"></script>
+
+      <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script> 
+
+      <script src="bower_components/form-validation/dist/js/formValidation.min.js"></script>
+      <script src="bower_components/form-validation/dist/js/framework/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>

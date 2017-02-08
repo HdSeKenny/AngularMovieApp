@@ -1,0 +1,89 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0px;
+}
+
+#items-menu {
+	height: 120px;
+	text-align: center;
+}
+
+#left-nav {
+	margin-left: 25px;
+	margin-top: 1px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+#nav-a {
+	margin-top: 5px;
+	font-size: 12px;
+	height: 30px;
+}
+
+#navbar-main {
+	font-size: 15px;
+}
+
+#nav-a:hover {  
+    background: rgb(205, 216, 238);
+}
+
+
+#main-nav {
+
+	background-color: black;
+}
+
+#search-icon {
+    height: 20px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+}
+#icon-0 {
+    height: 18px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+}
+#icon-1 {
+	border-radius: 50%;
+	margin-left: 10px;
+	height:30px;
+	width: 30px;
+}
+
+#icon-2{
+	margin-left: 10px;
+	margin-bottom: 3px;
+	height:20px;
+	width: 20px;
+}
+
+#currentuser {
+	font-size: 16px;
+}
+
+.stylish-input-group{
+	position: absolute;	
+	margin-top: 10px;
+	left: 700px;
+	top: 2px;
+	width: 20%;
+
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+
+
+
+
+
+
